@@ -15,6 +15,7 @@ use knuffel::Decode;
 
 #[derive(Parser)]
 struct Options {
+    #[clap(default_value="./")]
     path: PathBuf,
 }
 
@@ -94,7 +95,7 @@ pub fn main() -> miette::Result<()> {
             for line in buf_reader.lines() {
                 match line {
                     Ok(l) => {
-                        println!("[{name2}][stderr] {l}");
+                        println!("\x1b[0m[{name2}][stderr] {l}");
                     }
                     _ => return,
                 }
